@@ -34,20 +34,16 @@ export default class ImageUrlSource extends Component {
             imageUrl,
             width,
             height
-            } = this.props;
+        } = this.props;
 
         let componentStyle = {
             padding: 0,
             margin: 0,
-            top: 0
+            top: 0,
+            width: `${width}px`,
+            height: `${height}px`
         };
 
-        width && Object.assign(componentStyle, {
-            width: `${width}px`
-        });
-        height && Object.assign(componentStyle, {
-            height: `${height}px`
-        });
         style && Object.assign(componentStyle, style);
 
         return (
@@ -66,7 +62,7 @@ export default class ImageUrlSource extends Component {
         const {
             canvas,
             image
-            } = this;
+        } = this;
 
         if (!canvas || !image) {
             return;
@@ -77,12 +73,12 @@ export default class ImageUrlSource extends Component {
             width,
             height,
             blurAlphaChannel
-            } = this.props;
+        } = this.props;
 
         StackBlur.image(image, canvas, radius, blurAlphaChannel);
 
-        width && (canvas.style.width = `${width}px`);
-        height && (canvas.style.height = `${height}px`);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
     }
 
     onImageLoad() {
